@@ -324,31 +324,8 @@
 
       <div id="step-0" class="checker-step active">
         <p class="question">Habe ich gerade Schmerzen?</p>
-        <button class="answer-btn yes" onclick="nextStep('0','pain-yes')"><i class="ti ti-check"></i> Ja, ich habe Schmerzen</button>
+        <button class="answer-btn yes" onclick="showResult('emergency-pain')"><i class="ti ti-check"></i> Ja, ich habe Schmerzen</button>
         <button class="answer-btn no" onclick="nextStep('0','pain-no')"><i class="ti ti-x"></i> Nein, keine Schmerzen</button>
-      </div>
-
-      <div id="step-pain-yes" class="checker-step">
-        <p class="question">Wie stark sind die Schmerzen?<br><span style="font-size:13px;color:var(--text3);font-weight:400">(1 = kaum spürbar &nbsp;·&nbsp; 10 = sehr stark)</span></p>
-        <div style="padding: 0.5rem 0;">
-          <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text3); margin-bottom:6px;">
-            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-          </div>
-          <input type="range" id="pain-slider" min="1" max="10" value="5" step="1"
-            style="width:100%; accent-color:var(--red); height:6px; cursor:pointer;"
-            oninput="updateSliderLabel(this.value)" />
-          <div style="text-align:center; margin-top:10px;">
-            <span style="font-size:2rem; font-weight:700; color:var(--red)" id="slider-val">5</span>
-            <span style="font-size:14px; color:var(--text2)"> / 10</span>
-          </div>
-        </div>
-        <button class="primary-btn" onclick="evaluateSlider()">Weiter →</button>
-      </div>
-
-      <div id="step-pain-low" class="checker-step">
-        <p class="question">Habe ich außerdem Atemnot, Übelkeit, Erbrechen oder Durchfall?</p>
-        <button class="answer-btn yes" onclick="showResult('emergency-medical')"><i class="ti ti-check"></i> Ja</button>
-        <button class="answer-btn no" onclick="nextStep('pain-low','misc')"><i class="ti ti-x"></i> Nein</button>
       </div>
 
       <div id="step-pain-no" class="checker-step">
@@ -358,7 +335,7 @@
       </div>
 
       <div id="step-misc" class="checker-step">
-        <p class="question">Geht es um Wäsche, Schlafen, ein Gespräch oder meine Medikamente?</p>
+        <p class="question">Geht es um Wäsche, einkaufen, Medikamente, Geld oder Termine?</p>
         <button class="answer-btn no" onclick="showResult('wait-general')"><i class="ti ti-check"></i> Ja, darum geht es</button>
         <button class="answer-btn yes" onclick="showResult('emergency-other')"><i class="ti ti-question-mark"></i> Nein, es ist etwas anderes</button>
       </div>
@@ -367,7 +344,7 @@
       <div id="result-emergency-pain" class="result-box emergency">
         <div class="result-icon"><i class="ti ti-alert-circle"></i></div>
         <div class="result-title">Bitte klopfe jetzt ans Büro</div>
-        <p class="result-text">Schmerzen ab 5 sind ein Notfall. Du darfst und sollst uns wecken.<br><br>Wenn du zu schwach bist, ruf uns an – das Telefon ist immer laut.</p>
+        <p class="result-text">Schmerzen sind immer ein Grund, uns zu wecken. Du darfst und sollst kommen.<br><br>Wenn du zu schwach bist, ruf uns an – das Telefon ist immer laut.</p>
       </div>
 
       <div id="result-emergency-medical" class="result-box emergency">
@@ -399,38 +376,46 @@
       <div class="section-label">Das ist in Ordnung</div>
       <div class="rule-item rule-ok">
         <i class="ti ti-check rule-icon"></i>
-        <span class="rule-text">Leise in die Küche oder den Gemeinschaftsraum gehen</span>
+        <span class="rule-text">Während der Nachtruhe leise in die Küche oder den Gemeinschaftsraum gehen</span>
       </div>
       <div class="rule-item rule-ok">
         <i class="ti ti-check rule-icon"></i>
-        <span class="rule-text">Etwas essen oder trinken – auch nachts</span>
+        <span class="rule-text">Während der Nachtruhe etwas essen oder trinken</span>
       </div>
       <div class="rule-item rule-ok">
         <i class="ti ti-check rule-icon"></i>
-        <span class="rule-text">Leise fernsehen im Gemeinschaftsraum</span>
+        <span class="rule-text">Während der Nachtruhe leise fernsehen im Gemeinschaftsraum</span>
       </div>
       <div class="rule-item rule-ok">
         <i class="ti ti-check rule-icon"></i>
-        <span class="rule-text">Leise Musik in der eigenen Wohnung hören</span>
+        <span class="rule-text">Während der Nachtruhe leise Musik in der eigenen Wohnung hören</span>
+      </div>
+      <div class="rule-item rule-ok">
+        <i class="ti ti-check rule-icon"></i>
+        <span class="rule-text">Während der Nachtruhe leise duschen</span>
       </div>
     </div>
     <div class="card">
-      <div class="section-label">Das ist während der Nachtruhe nicht okay</div>
+      <div class="section-label">Das ist nicht okay</div>
       <div class="rule-item rule-no">
         <i class="ti ti-x rule-icon"></i>
-        <span class="rule-text">Laute Musik abspielen</span>
+        <span class="rule-text">Anderen ins Wort fallen</span>
       </div>
       <div class="rule-item rule-no">
         <i class="ti ti-x rule-icon"></i>
-        <span class="rule-text">Wäsche waschen</span>
+        <span class="rule-text">Während der Nachtruhe laute Musik abspielen</span>
       </div>
       <div class="rule-item rule-no">
         <i class="ti ti-x rule-icon"></i>
-        <span class="rule-text">Viel im Flur auf und ab laufen</span>
+        <span class="rule-text">Während der Nachtruhe Wäsche waschen</span>
       </div>
       <div class="rule-item rule-no">
         <i class="ti ti-x rule-icon"></i>
-        <span class="rule-text">Das Personal wegen keinen Notfällen wecken</span>
+        <span class="rule-text">Während der Nachtruhe viel im Flur auf und ab laufen</span>
+      </div>
+      <div class="rule-item rule-no">
+        <i class="ti ti-x rule-icon"></i>
+        <span class="rule-text">Während der Nachtruhe das Personal wegen keinen Notfällen wecken</span>
       </div>
     </div>
   </div>
